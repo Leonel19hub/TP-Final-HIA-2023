@@ -1,0 +1,26 @@
+version: "3.8"
+services:
+  hiafinal-cont:
+    container_name: hiafinal-cont
+    image: leonel19/hiafinal2023:latest
+    restart: always
+    environment:
+      - PORT=4200
+    expose:
+      - 4200
+    ports:
+      - 4200:80
+    networks:
+      - express_nw
+  watchtower:
+    container_name: watchtower
+    image: containrrr/watchtower
+    environment:
+      - WATCHTOWER_CLEANUP=true
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: --interval 30 hiafinal-cont
+
+networks:
+  express_nw:
+    driver: bridge
