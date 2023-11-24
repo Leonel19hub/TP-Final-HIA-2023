@@ -1,0 +1,47 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-10 offset-1">
+            <br>
+            <h1>Crear Rol</h1>
+            <br>
+            <form class="forms" [formGroup]="rolForm">
+                <div class="form-group">
+                    <label for="area" class="form-label">Area:</label>
+                    <select name="area" class="form-select" formControlName="area" required>
+                        <option value="" selected disabled>Seleccione un area...</option>
+                        <option *ngFor="let area of areas" value="{{area._id}}">{{area.nombreArea}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="nombreRol" class="form-label">Nombre del Rol:</label>
+                    <input type="text" class="form-control" placeholder="Ingrese el nombre del Rol" name="nombreRol"
+                        formControlName="nombreRol" required>
+                </div>
+                <br>
+                <button [disabled]="!rolForm.valid" class="boton btn btn-primary"
+                    (click)="enviarRol()">Registrar</button>
+
+            </form>
+            <br>
+            <br>
+        
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">Nombre Rol</th>
+                    <th scope="col">Area Asignada</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr *ngFor="let rol of roles">
+                    <td>{{rol.nombreRol}}</td>
+                    <td>{{rol.areaAsignada.nombreArea}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</div>
+</div>
