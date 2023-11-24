@@ -6,7 +6,7 @@ on:
 
 jobs:
   deploy:
-    name: build && push image to docker hub
+    name: construir && pushear imagen al docker hub
     runs-on: ubuntu-latest
 
     steps:
